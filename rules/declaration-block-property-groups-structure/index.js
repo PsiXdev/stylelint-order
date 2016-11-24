@@ -31,7 +31,8 @@ function rule(expectation, options) {
 		const cleanedConfig = cleanConfig(expectation);
 		const runPropertiesOrder = stylelint.rules['declaration-block-properties-order'](cleanedConfig, options);
 
-		// run declaration-block-properties-order rule
+		// run declaration-block-properties-order rule with warnings throwing
+		result.stylelint.ruleSeverities['declaration-block-properties-order'] = 'error';
 		runPropertiesOrder(root, result);
 
 		const expectedOrder = createExpectedOrder(expectation);
